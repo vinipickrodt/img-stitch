@@ -1,16 +1,42 @@
-# React + Vite
+# 🖼️ img-stitch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Junte múltiplos screenshots em uma única imagem contínua — diretamente no browser, sem upload para servidor.
 
-Currently, two official plugins are available:
+## Como funciona
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O app usa um algoritmo de **template matching por pixels** para encontrar a região de sobreposição entre imagens consecutivas e fazer a costura automaticamente. Todo o processamento é feito no cliente via Canvas API.
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 📤 Upload de múltiplas imagens
+- 🔀 Reordenação das imagens (arrastar cima/baixo)
+- 🔍 Matching automático com feedback de erro por par
+- ⚙️ Configurações ajustáveis:
+  - Tolerância a diferenças de cor
+  - Tamanho da amostra de busca
+  - Ignorar topo/rodapé (útil para barra de status e navegação)
+- 💾 Download da imagem final em PNG
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [lucide-react](https://lucide.dev/)
+
+## Rodando localmente
+
+```bash
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:5173`.
+
+## Rodando com Docker
+
+```bash
+docker build -t img-stitch .
+docker run -p 8080:80 img-stitch
+```
+
+Acesse `http://localhost:8080`.
